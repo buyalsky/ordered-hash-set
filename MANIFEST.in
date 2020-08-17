@@ -1,0 +1,4 @@
+include *.lock
+include Pipfile
+include LICENSE.txt
+recursive-include src *.py
