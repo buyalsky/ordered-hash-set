@@ -6,13 +6,13 @@ with open("README.rst", "r") as fd:
 
 setup(
     name='ordered-hash-set',
-    version='0.0.1',
+    version='0.0.2',
     description='Set that maintains insertion order',
     py_modules=['ordered_hash_set'],
     package_dir={'': 'src'},
     long_description=long_description,
 
-    url="https://github.com/buyalsky/ordered-set",
+    url="https://github.com/buyalsky/ordered-hash-set",
     author="Burak Dursunlar",
     author_email="burak.dursunlar@hotmail.com",
 
