@@ -2,6 +2,12 @@
 Ordered Hash Set
 ================
 
+.. image:: https://travis-ci.com/buyalsky/ordered-hash-set.svg?branch=master
+    :target: https://travis-ci.com/buyalsky/ordered-hash-set
+
+.. image:: https://badge.fury.io/py/ordered-hash-set.svg
+    :target: https://badge.fury.io/py/ordered-hash-set
+
 ordered-hash-set is data structure that stores immutable unique elements.
 Unlike built-in set in python, it also keeps the insertion order.
 
