@@ -43,13 +43,17 @@ class OrderedSet:
         previous_item, next_item = removed_item[1]
         if item == self._first:
             self._first = next_item
-            self._items[next_item][1][0] = None
+            if next_item:
+                self._items[next_item][1][0] = None
         elif item == self._last:
             self._last = previous_item
-            self._items[previous_item][1][1] = None
+            if previous_item:
+                self._items[previous_item][1][1] = None
         else:
-            self._items[previous_item][1][1] = next_item
-            self._items[next_item][1][0] = previous_item
+            if previous_item:
+                self._items[previous_item][1][1] = next_item
+            if next_item:
+                self._items[next_item][1][0] = previous_item
 
     def remove_all(self, *items):
         """
@@ -156,7 +160,8 @@ class OrderedSet:
         return len(self._items)
 
     def __str__(self):
-        return "OrderedSet("+', '.join(['{}']*self.__len__()).format(*(i for i in self)) + ")"
+        items = tuple(i for i in self)
+        return "OrderedSet("+', '.join(['{}']*(len(items))).format(*items) + ")"
 
     def __eq__(self, other):
         if not isinstance(self, other.__class__):
