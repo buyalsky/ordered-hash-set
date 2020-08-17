@@ -3,7 +3,7 @@ Ordered Hash Set
 ================
 
 ordered-hash-set is data structure that stores immutable unique elements.
-Unlike built-in set in python, it is also keeps the insertion order.
+Unlike built-in set in python, it also keeps the insertion order.
 
 Basic Usage
 -----------
