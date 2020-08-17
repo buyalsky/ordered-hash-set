@@ -52,19 +52,49 @@ class OrderedSet:
             self._items[next_item][1][0] = previous_item
 
     def remove_all(self, *items):
+        """
+        Removes all given items.
+        Raises KeyError if any of the items is not found in the set.
+
+        :param items: (tuple), Items to be removed.
+        """
         for item in items:
             self.remove(item)
 
     def clear(self):
         """
-        Clears the set.
+        Clears the set, removing all values.
         """
         self._items.clear()
         self._first = None
         self._last = None
 
+    def drain(self, reverse=False):
+        """
+        Returns a iterator that removes items from set and yields them.
+
+        :param reverse: If reverse is ``True`` items are yielded from end to start.
+        :return: (Iterator), iterator that consumes items.
+        """
+        if not reverse:
+            while self._first:
+                item = self._items.pop(self._first)
+                yield item[0]
+                self._first = item[1][1]
+        else:
+            while self._last:
+                item = self._items.pop(self._last)
+                yield item[0]
+                self._last = item[1][0]
+        self.clear()
+
     def get_all(self):
-        return list(_ for _ in self)
+        """
+        Returns a list containing all items.
+
+        :return: (list), Specified list that contains all items in the set.
+        """
+        return [_ for _ in self]
 
     def is_empty(self):
         """
@@ -73,6 +103,29 @@ class OrderedSet:
         :return: (bool), ``True`` if this set is empty, ``False`` otherwise.
         """
         return self.__len__() == 0
+
+    def __contains__(self, item):
+        return bool(self._items.get(item))
+
+    contains = __contains__
+
+    def contains_all(self, *items):
+        """
+        Determines whether this set contains all of the items in the specified collection or not.
+
+        :param items: (tuple), the specified items to be searched.
+        :return: (bool), ``True`` if all of the items in the specified collection exist in this set, ``False`` otherwise.
+        """
+        return all(item in self for item in items)
+
+    def contains_any(self, *items):
+        """
+        Checks whether any of the items exists in this set or not.
+
+        :param items: (tuple), items to be searched.
+        :return: (bool), ``True`` if any of the items in the specified collection exist in this set, ``False`` otherwise.
+        """
+        return any(item in self for item in items)
 
     def __getitem__(self, index):
         if index < 0:
@@ -99,27 +152,6 @@ class OrderedSet:
         self._next = self._items[self._next][1][1]
         return item
 
-    def __contains__(self, item):
-        return bool(self._items.get(item))
-
-    def contains_all(self, *items):
-        """
-        Determines whether this set contains all of the items in the specified collection or not.
-
-        :param items: (tuple), the specified items to be searched.
-        :return: (bool), ``True`` if all of the items in the specified collection exist in this set, ``False`` otherwise.
-        """
-        return all(self.contains(item) for item in items)
-
-    def contains_any(self, *items):
-        """
-        Checks whether any of the items exists in this set or not.
-
-        :param items: (tuple), items to be searched.
-        :return: (bool), ``True`` if any of the items in the specified collection exist in this set, ``False`` otherwise.
-        """
-        return any(self.contains(item) for item in items)
-
     def __len__(self):
         return len(self._items)
 
@@ -131,5 +163,3 @@ class OrderedSet:
             return False
 
         return self._items == other._items
-
-    contains = __contains__

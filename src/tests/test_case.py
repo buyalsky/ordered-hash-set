@@ -91,5 +91,29 @@ class TestBasic:
         with pytest.raises(TypeError):
             OrderedSet().add([])
 
+    def test_drain(self):
+        s = filled_set()
+        total = 0
+        for num in s.drain():
+            total += num
+        assert total == 21
+        assert s.is_empty()
+
+    def test_drain2(self):
+        s = filled_set()
+        e = OrderedSet()
+        for item in s.drain():
+            e.add(item)
+        assert s.is_empty()
+        assert str(e) == "OrderedSet(1, 2, 3, 4, 5, 6)"
+
+    def test_drain_reversed(self):
+        s = filled_set()
+        e = OrderedSet()
+        for item in s.drain(reverse=True):
+            e.add(item)
+        assert s.is_empty()
+        assert str(e) == "OrderedSet(6, 5, 4, 3, 2, 1)"
+
     def test_formatting(self):
         assert str(filled_set()) == "OrderedSet(1, 2, 3, 4, 5, 6)"
