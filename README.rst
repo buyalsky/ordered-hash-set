@@ -24,6 +24,8 @@ Basic Usage
   print(s) # prints: OrderedSet(London, Paris, Istanbul)
 
 Installation
+------------
+
 You can easily install via pip:
 
 .. code-block:: console
