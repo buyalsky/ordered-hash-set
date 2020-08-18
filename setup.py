@@ -6,7 +6,7 @@ with open("README.rst", "r") as fd:
 
 setup(
     name='ordered-hash-set',
-    version='0.0.9',
+    version='0.1.0',
     description='Set that maintains insertion order',
     py_modules=['ordered_hash_set'],
     package_dir={'': 'src'},
@@ -18,7 +18,6 @@ setup(
 
     classifiers=[
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
