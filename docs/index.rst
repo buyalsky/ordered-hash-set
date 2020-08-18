@@ -11,7 +11,7 @@ Welcome to ordered set's documentation!
    :caption: Contents:
 
    autodoc
-   rst/ordered_set
+   rst/ordered_hash_set
 
 Indices and tables
 ==================

@@ -51,7 +51,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'ordered-set'
+project = 'ordered-hash-set'
 copyright = '2020, Burak Dursunlar'
 author = 'Burak Dursunlar'
 
