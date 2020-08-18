@@ -6,7 +6,7 @@ with open("README.rst", "r") as fd:
 
 setup(
     name='ordered-hash-set',
-    version='0.1.0',
+    version='0.1.1',
     description='Set that maintains insertion order',
     py_modules=['ordered_hash_set'],
     package_dir={'': 'src'},
