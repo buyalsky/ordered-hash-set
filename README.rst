@@ -7,15 +7,19 @@ Ordered Hash Set
 
 .. image:: https://img.shields.io/pypi/v/ordered-hash-set
     :alt: PyPI
-
-.. image:: https://img.shields.io/badge/license-MIT-success.svg
-    :target: https://img.shields.io/badge/license-MIT-success
-
-.. image:: https://img.shields.io/pypi/pyversions/ordered-hash-set
-    :alt: PyPI - Python Version
+    :target: https://pypi.org/project/ordered-hash-set/
 
 ordered-hash-set is data structure that stores immutable unique elements.
 Unlike built-in set in python, it also keeps the insertion order.
+
+Installation
+------------
+
+Install via ``pip``:
+
+.. code-block:: console
+
+    pip install ordered-hash-set
 
 Basic Usage
 -----------
@@ -28,19 +32,15 @@ Basic Usage
 
   s.add("London")
   s.add("Tokyo")
-  # you can add multiple entries at once like this:
+  # you can add multiple entries at once, like this:
   s.update("Paris", "Istanbul")
   s.add("London")
   s.remove("Tokyo")
 
   print(s) # prints: OrderedSet(London, Paris, Istanbul)
 
-Installation
-------------
+API Documentation
+-----------------
 
-You can easily install via pip:
-
-.. code-block:: console
-
-    pip install ordered-hash-set
+Please see `API Reference <https://buyalsky.github.io/ordered-hash-set/en/master/rst/ordered_hash_set.html>`_ for more info
 
