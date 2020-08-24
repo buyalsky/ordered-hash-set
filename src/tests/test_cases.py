@@ -19,6 +19,16 @@ class TestBasic:
         s.add(5)
         assert 5 in s
 
+    def test_contains_any(self):
+        s = filled_set()
+        assert s.contains_any(7, 8, 4, 9, "str")
+        assert not s.contains_any(7, "str", 5.5)
+
+    def test_contains_all(self):
+        s = filled_set()
+        assert s.contains_all(1, 2, 3, 4, 5)
+        assert not s.contains_all(1, 2, 3, 4, 5, 5.5)
+
     def test_remove(self):
         s = OrderedSet()
         s.update(1, 2, 3, 4, 5, "str")
