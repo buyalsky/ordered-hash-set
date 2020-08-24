@@ -39,8 +39,19 @@ Basic Usage
 
   print(s) # prints: OrderedSet(London, Paris, Istanbul)
 
+  # Thanks to the hashing. Time complexity of checking
+  # if an element present in a collection is O(1).
+  # Which is faster than regular list: O(n).
+  if "Paris" in s:
+    print("Paris is in the set.")
+
+  # It is also possible, but not recommended due to inefficiency,
+  # to get the item by index:
+  assert s[2] == "Istanbul"
+
+
 API Documentation
 -----------------
 
-Please see `API Reference <https://buyalsky.github.io/ordered-hash-set/en/master/rst/ordered_hash_set.html>`_ for more info
+Please see `API Reference Page <https://buyalsky.github.io/ordered-hash-set/en/master/rst/ordered_hash_set.html>`_
 
