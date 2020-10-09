@@ -21,6 +21,12 @@ class OrderedSet:
             if len(self._items) != 1:
                 self._items[self._last][1][1] = item
             self._last = item
+            return self.__len__() - 1
+        else:
+            temp = self.get_all()
+            for i in range(self.__len__()):
+                if temp[i] == item:
+                    return i
 
     def update(self, *items):
         """
@@ -39,6 +45,11 @@ class OrderedSet:
 
         :param item: (object), Removed item
         """
+        index = 0
+        temp = self.get_all()
+        for i in range(self.__len__()):
+            if temp[i] == item:
+                index = i
         removed_item = self._items.pop(item)
         previous_item, next_item = removed_item[1]
         if item == self._first:
@@ -54,6 +65,7 @@ class OrderedSet:
                 self._items[previous_item][1][1] = next_item
             if next_item:
                 self._items[next_item][1][0] = previous_item
+        return index
 
     def remove_all(self, *items):
         """
