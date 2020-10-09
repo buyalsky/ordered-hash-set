@@ -20,6 +20,12 @@ Install via ``pip``:
 .. code-block:: console
 
     pip install ordered-hash-set
+    
+Or install from source:
+
+.. code-block:: console
+
+    python3 setup.py install
 
 Basic Usage
 -----------
