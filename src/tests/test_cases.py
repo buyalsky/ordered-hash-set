@@ -132,3 +132,16 @@ def test_drain_reversed(filled_set):
 
 def test_formatting(filled_set):
     assert str(filled_set) == "OrderedSet(1, 2, 3, 4, 5, 6)"
+
+
+def test_is_disjoint(filled_set):
+    other_parameter = OrderedSet(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    example = OrderedSet()
+    for parm in other_parameter:
+        example.add(parm)
+        assert not filled_set.is_disjoint(example)
+    example.clear()
+    other_parameter.remove_all(1, 2, 3, 4, 5, 6)
+    for parm in other_parameter:
+        example.add(parm)
+        assert filled_set.is_disjoint(example)
