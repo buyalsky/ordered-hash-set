@@ -131,6 +131,43 @@ class OrderedSet:
         """
         return any(item in self for item in items)
 
+    def is_disjoint(self, other):
+        """
+        Return True if the set has no elements in common with other.
+        Sets(also OrderedSets) are disjoint if and only if their intersection is the empty set.
+        """
+        pass
+
+    def is_subset(self, other):
+        """
+        Test whether every element in the set is in other.
+        """
+        pass
+
+    def is_superset(self, other):
+        """
+        Test whether every element in other is in the set.
+        """
+        pass
+
+    def intersection(self, *other):
+        """
+        Return a new set with elements common to the set and all others.
+        """
+        pass
+
+    def difference(self, *other):
+        """
+        Return a new set with elements in the set that are not in the others.
+        """
+        pass
+
+    def union(self, *other):
+        """
+        Return a new set with elements from the set and all others.
+        """
+        pass
+
     def __getitem__(self, index):
         if index < 0:
             return tuple(i for i in self)[index]
