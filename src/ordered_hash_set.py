@@ -133,10 +133,18 @@ class OrderedSet:
 
     def is_disjoint(self, other):
         """
-        Return True if the set has no elements in common with other.
+        Return ``True`` if the set has no elements in common with ``other``.
         Sets(also OrderedSets) are disjoint if and only if their intersection is the empty set.
+
+        :param other: (Array | Set | OrderedSet), Checked object.
+        :return: (Bool) If the set has no elements in common with other return True.
         """
-        pass
+
+        for element in other:
+            if element in self:
+                return False
+
+        return True
 
     def is_subset(self, other):
         """
