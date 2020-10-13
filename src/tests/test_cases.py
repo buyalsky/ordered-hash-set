@@ -167,3 +167,12 @@ def test_is_superset(filled_set):
             assert filled_set.is_superset(example)
         else:
             assert not filled_set.is_superset(example)
+
+
+def test_intersection(filled_set):
+    assert str(
+        filled_set.intersection({1, 2, 3}, OrderedSet(1, 2, 3, 4), OrderedSet(3, 1, 5), [1, 2, 3, 4, 5, 6])
+    ) == "OrderedSet(1, 3)"
+    assert str(
+        filled_set.intersection(OrderedSet(1, 2, 3, 4), [7, 5, 6], {3, 2, 1}, {}, filled_set)
+    ) == "OrderedSet()"
