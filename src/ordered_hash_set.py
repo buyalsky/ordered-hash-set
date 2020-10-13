@@ -137,7 +137,7 @@ class OrderedSet:
         Sets(also OrderedSets) are disjoint if and only if their intersection is the empty set.
 
         :param other: (list | set | OrderedSet), Checked object.
-        :return: (Bool) If the set has no elements in common with other return True.
+        :return: (bool) If the set has no elements in common with other return True.
         """
 
         for element in other:
@@ -151,7 +151,7 @@ class OrderedSet:
         Test whether every element in the set is in other.
 
         :param other: (list | set | OrderedSet), Checked object.
-        :return: (Bool) If the set is a subset of ``other`` return ``True``.
+        :return: (bool) If the set is a subset of ``other`` return ``True``.
         """
         
         for element in self:
@@ -165,7 +165,7 @@ class OrderedSet:
         Test whether every element in other is in the set.
 
         :param other: (list | set | OrderedSet), Checked object.
-        :return: (Bool) If the set is the superset of ``other`` return ``True``.
+        :return: (bool) If the set is the superset of ``other`` return ``True``.
         """
         
         for element in other:
