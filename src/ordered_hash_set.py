@@ -155,9 +155,7 @@ class OrderedSet:
         """
         
         for element in self:
-            if element in other:
-                continue
-            else:
+            if element not in other:
                 return False
 
         return True
@@ -171,9 +169,7 @@ class OrderedSet:
         """
         
         for element in other:
-            if element in self:
-                continue
-            else:
+            if element not in self:
                 return False
 
         return True
@@ -189,7 +185,7 @@ class OrderedSet:
 
         for element in self:
             for obj in other:
-                if not element in obj:
+                if element not in obj:
                     break
             else:
                 new_ordered_set.add(element)
