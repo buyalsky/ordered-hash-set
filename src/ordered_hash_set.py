@@ -178,7 +178,7 @@ class OrderedSet:
         """
         Return a new ordered set with elements common to the set and all others.
         
-        :parm *other: (list | set | OrderedSet), The sets to check common.
+        :param *other: (list | set | OrderedSet), The sets to check common.
         :return: (OrderedSet) the set with elements common to the OrderedSet object and all ``*other``.
         """
         new_ordered_set = OrderedSet()
@@ -196,7 +196,7 @@ class OrderedSet:
         """
         Return a new set with elements in the set that are not in the others.
 
-        :parm *other: (list | set | OrderedSet), The sets to check difference.
+        :param *other: (list | set | OrderedSet), The sets to check difference.
         :return: (OrderedSet) The set of the different elements.
         """
         
@@ -215,7 +215,7 @@ class OrderedSet:
         """
         Return a new set with elements from the set and all others.
 
-        :parm *other: (list | set | OrderedSet), The sets for union.
+        :param *other: (list | set | OrderedSet), The sets for union.
         :return: (OrderedSet) The new set with elements from the OrderedSet object and all others.
         """
         
