@@ -165,8 +165,18 @@ class OrderedSet:
     def is_superset(self, other):
         """
         Test whether every element in other is in the set.
+
+        :param other: (Array | Set | OrderedSet), Checked object.
+        :return: (Bool) If the set is the superset of ``other`` return ``True``.
         """
-        pass
+        
+        for element in other:
+            if element in self:
+                continue
+            else:
+                return False
+
+        return True
 
     def intersection(self, *other):
         """
