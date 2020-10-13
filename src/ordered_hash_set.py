@@ -180,9 +180,21 @@ class OrderedSet:
 
     def intersection(self, *other):
         """
-        Return a new set with elements common to the set and all others.
+        Return a new ordered set with elements common to the set and all others.
+        
+        :parm *other: (list | set | OrderedSet), The sets to check common.
+        :return: (OrderedSet) the set with elements common to the OrderedSet object and all ``*other``.
         """
-        pass
+        new_ordered_set = OrderedSet()
+
+        for element in self:
+            for obj in other:
+                if not element in obj:
+                    break
+            else:
+                new_ordered_set.add(element)
+
+        return new_ordered_set
 
     def difference(self, *other):
         """
