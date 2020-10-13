@@ -133,7 +133,7 @@ class OrderedSet:
 
     def is_disjoint(self, other):
         """
-        Return ``True`` if the set has no elements in common with ``other``.
+        Returns ``True`` if the set has no elements in common with ``other``.
         Sets(also OrderedSets) are disjoint if and only if their intersection is the empty set.
 
         :param other: (list | set | OrderedSet), Checked object.
@@ -148,7 +148,7 @@ class OrderedSet:
 
     def is_subset(self, other):
         """
-        Test whether every element in the set is in other.
+        Tests whether every element in the set is in other.
 
         :param other: (list | set | OrderedSet), Checked object.
         :return: (bool) If the set is a subset of ``other`` return ``True``.
@@ -162,7 +162,7 @@ class OrderedSet:
 
     def is_superset(self, other):
         """
-        Test whether every element in other is in the set.
+        Tests whether every element in other is in the set.
 
         :param other: (list | set | OrderedSet), Checked object.
         :return: (bool) If the set is the superset of ``other`` return ``True``.
@@ -176,7 +176,7 @@ class OrderedSet:
 
     def intersection(self, *other):
         """
-        Return a new ordered set with elements common to the set and all others.
+        Returns a new ordered set with elements common to the set and all others.
         
         :param *other: (list | set | OrderedSet), The sets to check common.
         :return: (OrderedSet) the set with elements common to the OrderedSet object and all ``*other``.
@@ -194,7 +194,7 @@ class OrderedSet:
 
     def difference(self, *other):
         """
-        Return a new set with elements in the set that are not in the others.
+        Returns a new set with elements in the set that are not in the others.
 
         :param *other: (list | set | OrderedSet), The sets to check difference.
         :return: (OrderedSet) The set of the different elements.
@@ -213,7 +213,7 @@ class OrderedSet:
 
     def union(self, *other):
         """
-        Return a new set with elements from the set and all others.
+        Returns a new set with elements from the set and all others.
 
         :param *other: (list | set | OrderedSet), The sets for union.
         :return: (OrderedSet) The new set with elements from the OrderedSet object and all others.
