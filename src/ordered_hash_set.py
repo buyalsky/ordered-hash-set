@@ -149,8 +149,18 @@ class OrderedSet:
     def is_subset(self, other):
         """
         Test whether every element in the set is in other.
+
+        :param other: (Array | Set | OrderedSet), Checked object.
+        :return: (Bool) If the set is a subset of ``other`` return ``True``.
         """
-        pass
+        
+        for element in self:
+            if element in other:
+                continue
+            else:
+                return False
+
+        return True
 
     def is_superset(self, other):
         """
