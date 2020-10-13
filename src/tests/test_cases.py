@@ -176,3 +176,12 @@ def test_intersection(filled_set):
     assert str(
         filled_set.intersection(OrderedSet(1, 2, 3, 4), [7, 5, 6], {3, 2, 1}, {}, filled_set)
     ) == "OrderedSet()"
+
+
+def test_difference(filled_set):
+    assert str(
+        filled_set.difference({6, 7, 8}, OrderedSet(5, 4, 7, 0), OrderedSet(5, 4, 7, 9), {})
+    ) == "OrderedSet(1, 2, 3)"
+    assert str(
+        filled_set.difference(OrderedSet(1, 2, 3), {}, OrderedSet(), filled_set)
+    ) == "OrderedSet()"
