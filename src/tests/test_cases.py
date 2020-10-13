@@ -132,3 +132,62 @@ def test_drain_reversed(filled_set):
 
 def test_formatting(filled_set):
     assert str(filled_set) == "OrderedSet(1, 2, 3, 4, 5, 6)"
+
+
+def test_is_disjoint(filled_set):
+    other_parameter = OrderedSet(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    example = OrderedSet()
+    for parm in other_parameter:
+        example.add(parm)
+        assert not filled_set.is_disjoint(example)
+    example.clear()
+    other_parameter.remove_all(1, 2, 3, 4, 5, 6)
+    for parm in other_parameter:
+        example.add(parm)
+        assert filled_set.is_disjoint(example)
+
+
+def test_is_subset(filled_set):
+    other_parameter = OrderedSet(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    example = OrderedSet()
+    for parm in other_parameter:
+        example.add(parm)
+        if parm <= 5:
+            assert not filled_set.is_subset(example)
+        else:
+            assert filled_set.is_subset(example)
+
+
+def test_is_superset(filled_set):
+    other_parameter = OrderedSet(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    example = OrderedSet()
+    for parm in other_parameter:
+        example.add(parm)
+        if parm <= 6:
+            assert filled_set.is_superset(example)
+        else:
+            assert not filled_set.is_superset(example)
+
+
+def test_intersection(filled_set):
+    assert str(
+        filled_set.intersection({1, 2, 3}, OrderedSet(1, 2, 3, 4), OrderedSet(3, 1, 5), [1, 2, 3, 4, 5, 6])
+    ) == "OrderedSet(1, 3)"
+    assert str(
+        filled_set.intersection(OrderedSet(1, 2, 3, 4), [7, 5, 6], {3, 2, 1}, {}, filled_set)
+    ) == "OrderedSet()"
+
+
+def test_difference(filled_set):
+    assert str(
+        filled_set.difference({6, 7, 8}, OrderedSet(5, 4, 7, 0), OrderedSet(5, 4, 7, 9), {})
+    ) == "OrderedSet(1, 2, 3)"
+    assert str(
+        filled_set.difference(OrderedSet(1, 2, 3), {}, OrderedSet(), filled_set)
+    ) == "OrderedSet()"
+
+
+def test_union(filled_set):
+    assert str(
+        filled_set.union([7, 8, 9], {1, 2, 3}, (5, 2, 9,), OrderedSet(), OrderedSet(10), filled_set)
+    ) == "OrderedSet(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)"

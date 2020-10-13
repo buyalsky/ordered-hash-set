@@ -131,6 +131,105 @@ class OrderedSet:
         """
         return any(item in self for item in items)
 
+    def is_disjoint(self, other):
+        """
+        Returns ``True`` if the set has no elements in common with ``other``.
+        Sets(also OrderedSets) are disjoint if and only if their intersection is the empty set.
+
+        :param other: (list | set | OrderedSet), Checked object.
+        :return: (bool) If the set has no elements in common with other return True.
+        """
+
+        for element in other:
+            if element in self:
+                return False
+
+        return True
+
+    def is_subset(self, other):
+        """
+        Tests whether every element in the set is in other.
+
+        :param other: (list | set | OrderedSet), Checked object.
+        :return: (bool) If the set is a subset of ``other`` return ``True``.
+        """
+        
+        for element in self:
+            if element not in other:
+                return False
+
+        return True
+
+    def is_superset(self, other):
+        """
+        Tests whether every element in other is in the set.
+
+        :param other: (list | set | OrderedSet), Checked object.
+        :return: (bool) If the set is the superset of ``other`` return ``True``.
+        """
+        
+        for element in other:
+            if element not in self:
+                return False
+
+        return True
+
+    def intersection(self, *other):
+        """
+        Returns a new ordered set with elements common to the set and all others.
+        
+        :param *other: (list | set | OrderedSet), The sets to check common.
+        :return: (OrderedSet) the set with elements common to the OrderedSet object and all ``*other``.
+        """
+        new_ordered_set = OrderedSet()
+
+        for element in self:
+            for obj in other:
+                if element not in obj:
+                    break
+            else:
+                new_ordered_set.add(element)
+
+        return new_ordered_set
+
+    def difference(self, *other):
+        """
+        Returns a new set with elements in the set that are not in the others.
+
+        :param *other: (list | set | OrderedSet), The sets to check difference.
+        :return: (OrderedSet) The set of the different elements.
+        """
+        
+        new_ordered_set = OrderedSet()
+
+        for element in self:
+            for obj in other:
+                if element in obj:
+                    break
+            else:
+                new_ordered_set.add(element)
+
+        return new_ordered_set
+
+    def union(self, *other):
+        """
+        Returns a new set with elements from the set and all others.
+
+        :param *other: (list | set | OrderedSet), The sets for union.
+        :return: (OrderedSet) The new set with elements from the OrderedSet object and all others.
+        """
+        
+        new_ordered_set = OrderedSet()
+
+        for element in self:
+            new_ordered_set.add(element)
+
+        for obj in other:
+            for element in obj:
+                new_ordered_set.add(element)
+
+        return new_ordered_set
+
     def __getitem__(self, index):
         if index < 0:
             return tuple(i for i in self)[index]
