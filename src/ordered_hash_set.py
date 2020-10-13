@@ -199,8 +199,21 @@ class OrderedSet:
     def difference(self, *other):
         """
         Return a new set with elements in the set that are not in the others.
+
+        :parm *other: (list | set | OrderedSet), The sets to check difference.
+        :return: (OrderedSet) The set of the different elements.
         """
-        pass
+        
+        new_ordered_set = OrderedSet()
+
+        for element in self:
+            for obj in other:
+                if element in obj:
+                    break
+            else:
+                new_ordered_set.add(element)
+
+        return new_ordered_set
 
     def union(self, *other):
         """
