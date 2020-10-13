@@ -156,3 +156,14 @@ def test_is_subset(filled_set):
             assert not filled_set.is_subset(example)
         else:
             assert filled_set.is_subset(example)
+
+
+def test_is_superset(filled_set):
+    other_parameter = OrderedSet(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    example = OrderedSet()
+    for parm in other_parameter:
+        example.add(parm)
+        if parm <= 6:
+            assert filled_set.is_superset(example)
+        else:
+            assert not filled_set.is_superset(example)
