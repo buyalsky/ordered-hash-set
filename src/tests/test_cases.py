@@ -145,3 +145,14 @@ def test_is_disjoint(filled_set):
     for parm in other_parameter:
         example.add(parm)
         assert filled_set.is_disjoint(example)
+
+
+def test_is_subset(filled_set):
+    other_parameter = OrderedSet(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    example = OrderedSet()
+    for parm in other_parameter:
+        example.add(parm)
+        if parm <= 5:
+            assert not filled_set.is_subset(example)
+        else:
+            assert filled_set.is_subset(example)
