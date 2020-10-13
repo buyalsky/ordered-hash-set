@@ -218,8 +218,21 @@ class OrderedSet:
     def union(self, *other):
         """
         Return a new set with elements from the set and all others.
+
+        :parm *other: (list | set | OrderedSet), The sets for union.
+        :return: (OrderedSet) The new set with elements from the OrderedSet object and all others.
         """
-        pass
+        
+        new_ordered_set = OrderedSet()
+
+        for element in self:
+            new_ordered_set.add(element)
+
+        for obj in other:
+            for element in obj:
+                new_ordered_set.add(element)
+
+        return new_ordered_set
 
     def __getitem__(self, index):
         if index < 0:
