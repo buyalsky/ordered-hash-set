@@ -185,3 +185,9 @@ def test_difference(filled_set):
     assert str(
         filled_set.difference(OrderedSet(1, 2, 3), {}, OrderedSet(), filled_set)
     ) == "OrderedSet()"
+
+
+def test_union(filled_set):
+    assert str(
+        filled_set.union([7, 8, 9], {1, 2, 3}, (5, 2, 9,), OrderedSet(), OrderedSet(10), filled_set)
+    ) == "OrderedSet(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)"
