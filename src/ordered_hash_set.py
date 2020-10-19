@@ -9,6 +9,7 @@ class OrderedSet:
     def add(self, item):
         """
         Adds the item to set if it is not exist.
+        Returns the index of added item (or already existing item) in the respective set.
         Raises TypeError if specified item is not hashable
 
         :param item: (object), item to be added.
@@ -38,7 +39,8 @@ class OrderedSet:
     def remove(self, item):
         """
         Removes given item from set.
-        Raises KeyError if item is not found.
+        Returns the used index of the removed item in the respective set.
+        Raises ValueError if item is not found.
 
         :param item: (object), Removed item
         """
