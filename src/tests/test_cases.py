@@ -34,39 +34,33 @@ def test_remove(filled_set):
     filled_set.remove_all(4, 6)
     print(filled_set)
     assert filled_set == OrderedSet(1, 2, 3, 5, "str")
-    with pytest.raises(KeyError):
+    with pytest.raises(ValueError):
         filled_set.remove(-1)
 
 
 def test_remove_first(filled_set):
-    filled_set.remove(1)
+    assert 0 == filled_set.remove(1)
     assert filled_set[0] == 2
     assert filled_set == OrderedSet(2, 3, 4, 5, 6)
 
 
 def test_remove_last(filled_set):
-    filled_set.remove(6)
+    assert 5 == filled_set.remove(6)
     assert filled_set[-1] == 5
 
 
 def test_add_remove_mixed(filled_set):
-    filled_set.remove(1)
+    assert 0 == filled_set.remove(1)
     assert filled_set[0] == 2
     assert filled_set == OrderedSet(2, 3, 4, 5, 6)
-    filled_set.remove(6)
+    assert 4 == filled_set.remove(6)
     assert filled_set == OrderedSet(2, 3, 4, 5)
-    filled_set.add(7)
+    assert 4 == filled_set.add(7)
     assert filled_set == OrderedSet(2, 3, 4, 5, 7)
 
 
 def test_len(filled_set):
-    s = OrderedSet()
-    s.add(1)
-    s.add(1)
-    s.add(1)
-    s.add(2)
-    s.add(3)
-    s.remove(1)
+    s = OrderedSet(1, 3)
     assert len(s) == 2
     assert len(filled_set) == 6
 

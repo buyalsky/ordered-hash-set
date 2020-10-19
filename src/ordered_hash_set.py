@@ -9,6 +9,7 @@ class OrderedSet:
     def add(self, item):
         """
         Adds the item to set if it is not exist.
+        Returns the index of added item (or already existing item) in the respective set.
         Raises TypeError if specified item is not hashable
 
         :param item: (object), item to be added.
@@ -21,6 +22,9 @@ class OrderedSet:
             if len(self._items) != 1:
                 self._items[self._last][1][1] = item
             self._last = item
+            return self.__len__() - 1
+        else:
+            return self.get_all().index(item)
 
     def update(self, *items):
         """
@@ -35,10 +39,12 @@ class OrderedSet:
     def remove(self, item):
         """
         Removes given item from set.
-        Raises KeyError if item is not found.
+        Returns the used index of the removed item in the respective set.
+        Raises ValueError if item is not found.
 
         :param item: (object), Removed item
         """
+        index = self.get_all().index(item)
         removed_item = self._items.pop(item)
         previous_item, next_item = removed_item[1]
         if item == self._first:
@@ -54,6 +60,7 @@ class OrderedSet:
                 self._items[previous_item][1][1] = next_item
             if next_item:
                 self._items[next_item][1][0] = previous_item
+        return index
 
     def remove_all(self, *items):
         """
