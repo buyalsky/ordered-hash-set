@@ -15,7 +15,7 @@ def filled_set():
 
 
 def test_contains(filled_set):
-    assert 4 == filled_set.add(5)
+    filled_set.add(5)
     assert 5 in filled_set
 
 
@@ -34,7 +34,7 @@ def test_remove(filled_set):
     filled_set.remove_all(4, 6)
     print(filled_set)
     assert filled_set == OrderedSet(1, 2, 3, 5, "str")
-    with pytest.raises(KeyError):
+    with pytest.raises(ValueError):
         filled_set.remove(-1)
 
 
@@ -45,7 +45,7 @@ def test_remove_first(filled_set):
 
 
 def test_remove_last(filled_set):
-    assert 4 == filled_set.remove(6)
+    assert 5 == filled_set.remove(6)
     assert filled_set[-1] == 5
 
 
@@ -60,13 +60,7 @@ def test_add_remove_mixed(filled_set):
 
 
 def test_len(filled_set):
-    s = OrderedSet()
-    assert 0 == s.add(1)
-    assert 0 == s.add(1)
-    assert 0 == s.add(1)
-    assert 1 == s.add(2)
-    assert 2 == s.add(3)
-    assert 0 == s.remove(1)
+    s = OrderedSet(1, 3)
     assert len(s) == 2
     assert len(filled_set) == 6
 
@@ -90,14 +84,14 @@ def test_equality():
     s2.update(1, 2, 3, 4, 5, 6, 7)
 
     assert s == s2
-    assert 0 == s2.remove(1)
-    assert 6 == s2.add(1)
+    s2.remove(1)
+    s2.add(1)
     assert not s == s2
 
 
 def test_uniqueness(filled_set):
     filled_set.update(1, 2, 3, 4, 5, 6, 1, 1, 1, 55)
-    assert 5 == filled_set.remove(6)
+    filled_set.remove(6)
     assert filled_set == OrderedSet(1, 2, 3, 4, 5, 55)
 
 
